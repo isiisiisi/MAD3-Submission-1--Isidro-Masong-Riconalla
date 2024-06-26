@@ -3,6 +3,7 @@ import 'package:state_change_demo/src/controllers/auth_controller.dart';
 import 'package:state_change_demo/src/routing/router.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   AuthController.initialize();
   GlobalRouter.initialize();
   await AuthController.I.loadSession();
