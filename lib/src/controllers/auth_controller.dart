@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:state_change_demo/src/enum/enum.dart';
 
 class AuthController with ChangeNotifier {
   // Static method to initialize the singleton in GetIt
+  static const _storage = FlutterSecureStorage();
+  static const _keyAuthToken = 'auth_token';
+
   static void initialize() {
     GetIt.instance.registerSingleton<AuthController>(AuthController());
   }
@@ -21,24 +25,35 @@ class AuthController with ChangeNotifier {
     if (isLoggedIn) {
       state = AuthState.authenticated;
       //should store session
-
+      await _storage.write(key: _keyAuthToken, value: 'some_auth_token');
       notifyListeners();
     }
   }
 
   ///write code to log out the user and add it to the home page.
-  logout() {
+  logout() async {
     //should clear session
+    await _storage.delete(key: _keyAuthToken);
+    state = AuthState.unauthenticated;
+    notifyListeners();
   }
 
   ///must be called in main before runApp
   ///
   loadSession() async {
     //check secure storage method
+    String? token = await _storage.read(key: _keyAuthToken);
+    if (token != null) {
+      state = AuthState.authenticated;
+    } else {
+      state = AuthState.unauthenticated;
+    }
+    notifyListeners();
+  }
   }
 
   ///https://pub.dev/packages/flutter_secure_storage or any caching dependency of your choice like localstorage, hive, or a db
-}
+
 
 class SimulatedAPI {
   Map<String, String> users = {"testUser": "12345678ABCabc!"};
