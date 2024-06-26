@@ -1,16 +1,25 @@
-# state_change_demo
+# Practice on Pre-defined Login Account
 
-States and how they affect each other
+Dependencies used:
+  - go_router: ^14.1.4
+  - get_it: ^7.7.0
+  - form_field_validator: ^1.1.0
+  - flutter_spinkit: ^5.2.1
+  - flutter_secure_storage: ^9.2.2
 
-## Getting Started
+## Controllers
+### auth_controller.dart
+Short Description:
+    uses SimulatedAPI class for backend API for user login, manages the authentication state and actions using the singleton pattern to ensure a single instance across the app.The initialize method registers AuthController as a singleton, and static getters provide easy access to the instance. This setup provides a basic structure for managing user authentication in a Flutter application, ensuring secure storage of session data and efficient state management.
 
-This project is a starting point for a Flutter application.
+## Enum
+### enum.dart
+Short Description:
 
-A few resources to get you started if this is your first Flutter project:
+The AuthState enum defines two states for user authentication: authenticated, indicating the user is logged in, and unauthenticated, indicating the user is logged out.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Routing
+### router.dart
+Short Description:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Handles the routing of screens using the GoRouter.
