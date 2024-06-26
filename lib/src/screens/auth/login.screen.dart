@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 100),
           height: 52,
           child: ElevatedButton(
             onPressed: () {
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 120),
           child: Form(
             key: formKey,
             child: Column(
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 8,
+                  height: 40,
                 ),
                 Flexible(
                   child: TextFormField(
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       MaxLengthValidator(128,
                           errorText: "Password cannot exceed 72 characters"),
                       PatternValidator(
-                          r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+?\-=[\]{};':,.<>]).*$",
+                          r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*()_+?\-=[\]{};':,.<>]).*$",
                           errorText:
                               'Password must contain at least one symbol, one uppercase letter, one lowercase letter, and one number.')
                     ]).call,
@@ -145,37 +145,25 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  final OutlineInputBorder _baseBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.grey),
-    borderRadius: BorderRadius.all(Radius.circular(4)),
+  final OutlineInputBorder _baseBorder = OutlineInputBorder(
+    borderSide: const BorderSide(color: Colors.grey),
+    borderRadius: BorderRadius.circular(15),
   );
 
   InputDecoration get decoration => InputDecoration(
-      // prefixIconColor: AppColors.primary.shade700,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-      filled: true,
-      fillColor: Colors.white,
-      errorMaxLines: 3,
-      disabledBorder: _baseBorder,
-      enabledBorder: _baseBorder.copyWith(
-        borderSide: const BorderSide(color: Colors.black87, width: 1),
-      ),
-      focusedBorder: _baseBorder.copyWith(
-        borderSide: const BorderSide(color: Colors.blueAccent, width: 1),
-      ),
-      errorBorder: _baseBorder.copyWith(
-        borderSide: const BorderSide(color: Colors.deepOrangeAccent, width: 1),
-      )
-      // errorStyle:
-      // AppTypography.body.b5.copyWith(color: AppColors.highlight.shade900),
-      // focusedErrorBorder: _baseBorder.copyWith(
-      // borderSide: BorderSide(color: AppColors.highlight.shade900, width: 1),
-      // ),
-      // labelStyle: AppTypography.subheading.s1
-      //     .copyWith(color: AppColors.secondary.shade2),
-      // floatingLabelStyle: AppTypography.heading.h5
-      //     .copyWith(color: AppColors.primary.shade400, fontSize: 18),
-      // hintStyle: AppTypography.subheading.s1
-      //     .copyWith(color: AppColors.secondary.shade2),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+        filled: true,
+        fillColor: Colors.white,
+        errorMaxLines: 3,
+        disabledBorder: _baseBorder,
+        enabledBorder: _baseBorder, // Corrected line
+        focusedBorder: _baseBorder.copyWith(
+          borderSide: const BorderSide(color: Colors.blueAccent, width: 1),
+        ),
+        errorBorder: _baseBorder.copyWith(
+          borderSide:
+              const BorderSide(color: Colors.deepOrangeAccent, width: 1),
+        ),
       );
 }
