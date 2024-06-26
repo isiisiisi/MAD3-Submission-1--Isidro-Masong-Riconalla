@@ -23,8 +23,15 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Welcome to the Home Screen"),
+      body: const SafeArea(
+          child: Center(
+           child:  Text("Welcome to the Home Page \nGlaiza!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold
+            )),
+          ),
       ),
     );
   }
