@@ -56,7 +56,7 @@ class AuthController with ChangeNotifier {
 
 
 class SimulatedAPI {
-  Map<String, String> users = {"testUser": "12345678ABCabc!"};
+  Map<String, String> users = {"Glaiza": "IML1234imr678!"};
 
   Future<bool> login(String userName, String password) async {
     await Future.delayed(const Duration(seconds: 4));

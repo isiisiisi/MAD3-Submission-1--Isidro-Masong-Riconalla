@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Flexible(
+                 Flexible(
                   child: TextFormField(
                     decoration: decoration.copyWith(
                         labelText: "Username",
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 8,
                 ),
                 Flexible(
                   child: TextFormField(
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       MaxLengthValidator(128,
                           errorText: "Password cannot exceed 72 characters"),
                       PatternValidator(
-                          r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*()_+?\-=[\]{};':,.<>]).*$",
+                          r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+?\-=[\]{};':,.<>]).*$",
                           errorText:
                               'Password must contain at least one symbol, one uppercase letter, one lowercase letter, and one number.')
                     ]).call,
@@ -136,6 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
 
   onSubmit() {
     if (formKey.currentState?.validate() ?? false) {
